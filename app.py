@@ -6,6 +6,30 @@ responsive. State is held in a single ProjectState object per session.
 """
 from __future__ import annotations
 
+# Make both "flat upload" (all files at root) and "src/ package" layouts work.
+# If files were dragged in flat, `from src.config import settings` fails; this
+# fallback covers that case so the Space starts regardless of upload style.
+import os
+import sys
+_HERE = os.path.dirname(os.path.abspath(__file__))
+if _HERE not in sys.path:
+    sys.path.insert(0, _HERE)
+try:
+    from src.config import settings
+    from src.downloader import download, is_supported
+    from src.ffmpeg_utils import concat_clips, probe_duration
+    from src.keepalive import ping as cf_ping
+    from src.nine_router import NineRouterClient
+    from src.telegram_sender import TelegramClient
+except ImportError:
+    # Flat-layout fallback (no src/ package)
+    from config import settings
+    from downloader import download, is_supported
+    from ffmpeg_utils import concat_clips, probe_duration
+    from keepalive import ping as cf_ping
+    from nine_router import NineRouterClient
+    from telegram_sender import TelegramClient
+
 import logging
 import threading
 import time
@@ -16,13 +40,6 @@ from pathlib import Path
 from typing import List, Optional
 
 import gradio as gr
-
-from src.config import settings
-from src.downloader import download, is_supported
-from src.ffmpeg_utils import concat_clips, probe_duration
-from src.keepalive import ping as cf_ping
-from src.nine_router import NineRouterClient
-from src.telegram_sender import TelegramClient
 
 
 logging.basicConfig(
