@@ -1,4 +1,6 @@
-gradio>=4.31.0
+# Pinned to 5.x for stable Chatbot(type="messages") + theme=gr.themes.Soft() APIs.
+# Gradio 6.x removed/changed several params we use; do not bump without retesting.
+gradio==5.49.0
 yt-dlp>=2024.8.6
 httpx>=0.27.0
 pydantic>=2.7.0
