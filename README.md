@@ -1,3 +1,14 @@
+---
+title: TikTok Video Editor Assistant
+emoji: 🎬
+colorFrom: red
+colorTo: purple
+sdk: docker
+app_port: 7860
+pinned: false
+short_description: Edit vertical videos with ffmpeg + AI chat
+---
+
 # 🎬 TikTok Video Editor Assistant
 
 Gradio app that downloads clips from TikTok / Instagram / Threads / YouTube,
