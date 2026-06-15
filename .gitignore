@@ -1,0 +1,44 @@
+# Byte-compiled / cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Virtual envs
+.venv/
+venv/
+env/
+
+# Local secrets (NEVER commit)
+.env
+.env.local
+.env.*.local
+*.key
+secrets/
+
+# Build / dist
+build/
+dist/
+*.egg-info/
+
+# FFmpeg / yt-dlp working dirs
+tmp/
+work/
+downloads/
+output/
+*.mp4
+*.mp3
+*.png
+*.jpg
+*.webm
+*.mkv
+*.wav
+
+# Editor
+.vscode/
+.idea/
+*.swp
+.DS_Store
+
+# HF Space
+README.md.bak
